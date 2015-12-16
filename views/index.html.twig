@@ -1,0 +1,19 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+    {% if movies is empty %}
+        <div class="alert alert-danger">
+            <strong>Désolé !</strong> Aucun film disponible
+        </div>
+    {% endif %}
+    {% for movie in movies %}
+        <div class = "col-sm-6 col-md-4">
+            <a href = "" >
+                <h2>{{movie.mov_title}}</h2>
+            </a>
+        </div>
+
+    {% endfor%}
+{% endblock %}

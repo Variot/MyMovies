@@ -1,0 +1,20 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}{{ espece.libelleEsp }}{% endblock %}
+
+{% block content %}
+    <h1>{{espece.libelleEsp}}</h1>
+    {% if animaux is empty %}
+        <div class="alert alert-danger">
+        <strong>Désolé !</strong> Aucun animal disponible pour cette espèce
+        </div>
+    {% endif %}
+    {% for animal in animaux %}
+    <div class = "col-sm-6 col-md-4">
+      <a href = "/animal/{{ animal.codeAni }}" class = "thumbnail">
+         <img data-toggle="tooltip" data-placement="bottom" title="{{animal.nomAni}}" src="{{ app.request.basepath }}/images/{{animal.codeAni}}.jpg" alt="{{animal.nomAni}}"/>
+      </a>
+   </div>
+        
+    {% endfor%}
+{% endblock %}

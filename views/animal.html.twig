@@ -1,0 +1,53 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}{{ animal.nomAni }}{% endblock %}
+
+{% block content %}
+    <div class = "jumbotron">
+        <h2>{{animal.nomAni}}</h2>
+    <div class="row">
+
+
+        <div class = "col-sm-6 col-md-4">
+            <img class="img-responsive" src="{{ app.request.basepath }}/images/{{animal.codeAni}}.jpg" alt="{{animal.nomAni}}"/>
+        </div>
+    <div class = "col-sm-6" col-md-4>
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#home">Description</a></li>
+            <li><a data-toggle="tab" href="#menu1">Caractéristiques</a></li>
+            <li><a data-toggle="tab" href="#menu2">Contact</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+                <h5>{{ animal.descriptionAni }}</h5>
+            </div>
+            <div id="menu1" class="tab-pane fade">
+                <h3>Date de naissance :</h3><h4>{{ animal.dateNaissance }}</h4>
+                <h3>Tatouage :
+                    {% if animal.tatoueAni == 1 %}
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    {% else %}
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    {% endif %}
+                </h3>
+            </div>
+            <div id="menu2" class="tab-pane fade">
+                <h3>Propriétaire :</h3><h4> {{ animal.proprietaireAni }}</h4>
+            </div>
+        </div>
+
+
+
+    </div>
+    </div>
+        <div class="row">
+            <div class = "col-sm-6"><h3>Prix : </h3><h4>{{ animal.prixAni }} €</h4></div><br/>
+            <div class = "col-sm-4"><button type="button" class="btn btn-block btn-primary btn-embossed">
+                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Ajouter au panier
+                </button></div>
+        </div>
+    </div>
+
+
+{% endblock %}
